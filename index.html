@@ -14,7 +14,23 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/page.css">
+
+		<script type="text/javascript" src="http://use.typekit.net/aob6rqa.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		
+
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+		<style type="text/css">
+		      html { height: 100% }
+		      body { height: 100%; margin: 0; padding: 0 }
+		      #map_canvas { width:100%; height: 65% }
+            .omaha_geography  {z-index:20; position:absolute; top:20px; left:0px; width:100% }
+            .omaha_geography form {width:200px; margin:0px auto;}
+            .omaha_geography input {margin: 0px 0px 0px 0px; height:30px; width:200px;}
+            
+            </style>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -22,36 +38,73 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-
-
+    <div class="omaha_geography">
         <form>
-        <input type="text" />
+            <input type="text" />
         </form>
+    </div>
+    <div id="map_canvas" style="width:100%;"></div>
+	<div class="text_wrapper">
+		<div id="coloumn1">
+			<div class="article">
+				<div class="headline"><a href="http://www.nytimes.com/2013/02/16/nyregion/cuomo-spokeswoman-allison-gollust-quits-after-4-months.html">Cuomo Spokeswoman, Allison Gollust, Quits After 4 Months</a></div>
+				<div class="byline">By THOMAS KAPLAN</div>
+				<div class="article_body">Gov. Andrew M. Cuomo&rsquo;s new communications director is leaving her post after just four months to reunite with her former boss, Jeffrey Zucker, the new president of CNN Worldwide . The aide, Allison Gollust, informed Mr. Cuomo of her resignation on Friday, and will leave the governor&rsquo;s office effective March 1. She will become the senior</div>
+			</div>
+			<div class="article" id="article2">
+				<div class="headline"><a href=""http://www.nytimes.com/2013/02/15/nyregion/lottery-numbers-for-new-york-new-jersey-and-connecticut.html"">Lottery Numbers for New York, New Jersey and Connecticut</a></div>
+				<div class="byline">By HELLEN SMITH</div>
+				<div class="article_body">Feb. 14, 2013 Midday New York Numbers &mdash; 360; Lucky Sum &mdash; 9 Midday New York Win 4 &mdash; 7036; Lucky Sum &mdash; 16 New York Numbers &mdash; 697; Lucky Sum &mdash; 22 New York Win 4 &mdash; 5835; Lucky Sum &mdash; 21 New York Take 5 &mdash; 2, 6, 14, 34, 37 New York Pick 10 &mdash; 2, 13, 14, 15, 20, 22, 23, 27, 30, 35, 36, 39, 43, 50,</div>
+			</div>
 
-        <label for="longitude"> Longitude</label>
-        <input type="range" name="longitude" min="-180" max="180" value="0" step="5" onchange="showValue(this.value)" />
-        <span id="range">0</span>
-        <br />
-        <label for="latitude">Latitude </label>
-        <input type="range" name="latitude" min="-90" max="90" value="0" step="5" onchange="showValue(this.value)" />
-        
-        
-        
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-       
-            <script type="text/javascript">
-           
-            $(document).ready(function(){
-               
-                baller();  
-               
-               
-               
-            })
+			<div class="article" id="article2">
+				<div class="headline"><a href="http://www.nytimes.com/2013/02/16/nyregion/cuomo-spokeswoman-allison-gollust-quits-after-4-months.html">Utility Critics Seek a Public Advocate for New York Customers</a></div>
+				<div class="byline">By PATRICK McGEEHAN</div>
+				<div class="article_body">In the wake of Hurricane Sandy , New Yorkers have harshly criticized their utilities, saying they are poorly prepared for big storms and respond too slowly to repair the damage. Gov. Andrew M. Cuomo has sympathized and has called for comprehensive changes , including dissolving the Long Island Power Authority and increasing the powers of the</div>
+			</div>
+		</div>
+
+		<div id="column2">
+			<img src="img/australia_1.jpg"/>
+			<div class="slideshow_title">Tropical Cyclone Yasi Makes Landfall</div>
+			<img src="img/australia_2.jpg"/>
+			<div class="slideshow_title">Tropical Cyclone Yasi Makes Landfall</div>
+			<img src="img/australia_3.jpg"/>
+			<div class="slideshow_title">Tropical Cyclone Yasi Makes Landfall</div>
+		</div>
+	</div>
+
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA01Jlq2uc3b-7Jn1zGkxH1FI7q4IorGz0&sensor=true"></script> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function initialize() {
+            var latitude = -37.7833;
+            var longitude = 144.9667;
+            var mapOptions = {
+              center: new google.maps.LatLng(latitude, longitude),
+              zoom: 8,
+              mapTypeId: google.maps.MapTypeId.SATELLITE
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"),
+                mapOptions);
           
+            var myLatlng = new google.maps.LatLng(latitude,longitude);
+          
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title:"Hello World!"
+            });
+         }
+    
+       
+            $(document).ready(function(){
+               initialize();
+                baller();  
+            })
+      
             function baller() {
                 var geo_key = "2f5910b2d12a5cb04004db0cd5dd42a0:9:67107182";
                 var article_key = "071f2dcd4d4d36bc6972b9ff31dad63f:10:67107182";
@@ -72,48 +125,12 @@
                          console.log(json_data);
                          
                });
+           return;
+    }
+   
 
-               return;
-                
-            }
-           
 
-			function createCORSRequest(method, url) {
-			  var xhr = new XMLHttpRequest();
-			  if ("withCredentials" in xhr) {
-
-			    // Check if the XMLHttpRequest object has a "withCredentials" property.
-			    // "withCredentials" only exists on XMLHTTPRequest2 objects.
-			    xhr.open(method, url, true);
-
-			  } else if (typeof XDomainRequest != "undefined") {
-
-			    // Otherwise, check if XDomainRequest.
-			    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-			    xhr = new XDomainRequest();
-			    xhr.open(method, url);
-
-			  } else {
-
-			    // Otherwise, CORS is not supported by the browser.
-			    xhr = null;
-
-			  }
-			  return xhr;
-			}
-/*
-			var xhr = createCORSRequest('GET', url);
-			if (!xhr) {
-			  throw new Error('CORS not supported');
-			}
-  */         
-           
-           
-           function showValue(newValue)
-           {
-                   document.getElementById("range").innerHTML=newValue;
-           }
-           </script>
+    </script>
        
        
         
