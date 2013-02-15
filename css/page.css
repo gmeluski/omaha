@@ -1,22 +1,29 @@
 .text_wrapper {
 	margin: 30px auto;
 	width: 960px;
+    padding-bottom:50px;
 }
 
 /* HEADER
 */
 #header{
-	margin-bottom: 50px;
+	height: 40px;
+	top: 0px;
+	padding: 10px;
 }
 
-#header img{
-	width: 100%;
+#map_canvas { width:100%; height: 65%; margin-bottom: 50px }
+
+.omaha_geography  {z-index:20; top:50px; right:10px; width:100%;}
+.omaha_geography form {width:458px; float: right; display: inline; padding-top: 4px;}
+.omaha_geography input {margin: 0px 0px 0px 0px; height:25px; width:390px;}
+
+#go{
+	display: inline;
 }
 
-#headerTitle{
-	position: absolute;
-	margin-left: 200px;
-	top: 100px;
+#header #logo{
+	float: left;
 }
 
 /* COLOUMN 1
@@ -30,9 +37,9 @@
 
 .headline{
 	font-family: nyt-cheltenham, georgia, "times new roman", times, serif;
-	font-weight: 700;
-	font-size: 2.0em;
-	line-height: 1.1em;
+	font-weight: bold;
+	font-size: 32px;
+	line-height: 34px;
 	font-style: italic;
 	cursor: auto;
 }
@@ -55,9 +62,9 @@
 .byline{
 	font-family: nyt-cheltenham, Georgia, Times, "Times New Roman", serif;
 	color: #261903;
-	font-size: 0.97em;
+	font-size: 12px;
 	font-weight: bold;
-	margin-top: 14px;
+	margin-top: 5px;
 	margin-bottom: 3px;
 }
 
@@ -66,7 +73,8 @@
 }
 
 .article_body{
-	font-size: 1em;
+	color: #333;
+	font-size: 14px;
 	font-family: Georgia, Times, "Times New Roman", serif;
 	line-height: 1.467em;
 }
