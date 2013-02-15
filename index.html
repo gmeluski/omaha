@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+
+        <form>
+        <input type="text" />
+        </form>
+
+        <label for="longitude"> Longitude</label>
+        <input type="range" name="longitude" min="-180" max="180" value="0" step="5" onchange="showValue(this.value)" />
+        <span id="range">0</span>
+        <br />
+        <label for="latitude">Latitude </label>
+        <input type="range" name="latitude" min="-90" max="90" value="0" step="5" onchange="showValue(this.value)" />
+        
+        
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+       
+            <script type="text/javascript">
+           
+            $(document).ready(function(){
+               
+                baller();  
+               
+               
+               
+            })
+          
+            function baller() {
+                var geo_key = "2f5910b2d12a5cb04004db0cd5dd42a0:9:67107182";
+                var article_key = "071f2dcd4d4d36bc6972b9ff31dad63f:10:67107182";
+                var search_base = "http://api.nytimes.com/svc/";
+                var geo_search = "semantic/v2/geocodes";
+                var article_search = "search/v1/article";
+                
+               
+               $.ajax({
+                    url : 'geography.php',    
+                    data : {
+                        type : 'article',    
+                        geo_location : 'AUSTRALIA'
+                    }
+                   
+               }).done(function(data){
+                         json_data = $.parseJSON(data);
+                         console.log(json_data);
+                         
+               });
+
+               return;
+                
+            }
+           
+
+			function createCORSRequest(method, url) {
+			  var xhr = new XMLHttpRequest();
+			  if ("withCredentials" in xhr) {
+
+			    // Check if the XMLHttpRequest object has a "withCredentials" property.
+			    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+			    xhr.open(method, url, true);
+
+			  } else if (typeof XDomainRequest != "undefined") {
+
+			    // Otherwise, check if XDomainRequest.
+			    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+			    xhr = new XDomainRequest();
+			    xhr.open(method, url);
+
+			  } else {
+
+			    // Otherwise, CORS is not supported by the browser.
+			    xhr = null;
+
+			  }
+			  return xhr;
+			}
+/*
+			var xhr = createCORSRequest('GET', url);
+			if (!xhr) {
+			  throw new Error('CORS not supported');
+			}
+  */         
+           
+           
+           function showValue(newValue)
+           {
+                   document.getElementById("range").innerHTML=newValue;
+           }
+           </script>
+       
+       
+        
+    </body>
+</html>
